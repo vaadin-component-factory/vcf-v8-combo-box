@@ -15,15 +15,12 @@
  */
 package com.vaadin.componentfactory.demo;
 
-import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.html.Label;
+import com.vaadin.componentfactory.combobox.V8ComboBox;
 import com.vaadin.flow.demo.DemoView;
 import com.vaadin.flow.router.Route;
 
-import combobox.V8ComboBox;
-
 /**
- * View for {@link EnhancedDateRangePicker} demo.
+ * View for {@link V8ComboBox} demo.
  *
  * @author Vaadin Ltd
  */
@@ -32,37 +29,17 @@ public class V8ComboBoxDemoView extends DemoView {
 
     @Override
     public void initView() {
-        createPatternDatePicker();
-
-        addCard("Additional code used in the demo",
-                new Label("These methods are used in the demo."));
+        createBasicComboBoxExample();
     }
 
+    private void createBasicComboBoxExample() {
+      // begin-source-example
+      // source-example-heading: V8 ComboBox Basic example
 
-    private void createPatternDatePicker() {
-        Div message = createMessageDiv("simple-picker-message");
-
-        // begin-source-example
-        // source-example-heading: Date picker with pattern
-
-        V8ComboBox<String> vcb = new V8ComboBox<>("Basic usage", "Option 1", "Option 2", "Option 3");
-
-        // end-source-example
-
-
-        addCard("V8 ComboBox Basic example", vcb, message);
-    }
-
-    // begin-source-example
-    // source-example-heading: Additional code used in the demo
-    /**
-     * Additional code used in the demo
-     */
-    private Div createMessageDiv(String id) {
-        Div message = new Div();
-        message.setId(id);
-        message.getStyle().set("whiteSpace", "pre");
-        return message;
-    }
-    // end-source-example
+      V8ComboBox<String> vcb = new V8ComboBox<>("Basic usage", "Option 1", "Option 2", "Option 3");
+      
+      // end-source-example
+      addCard("V8 ComboBox Basic example", vcb);
+  }
+    
 }
