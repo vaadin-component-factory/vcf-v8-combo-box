@@ -780,6 +780,8 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
   _loadingChanged(loading) {
     if (loading) {
       this._focusedIndex = -1;
+    } else {
+      this._focusFirst();
     }
   }
 
@@ -849,7 +851,11 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
 
     this.$.overlay._selectedItem = selectedItem;
     if (this.filteredItems && this.$.overlay._items) {
-      this._focusedIndex = this.filteredItems.indexOf(selectedItem);
+      if(selectedItem == null) {
+        this._focusedIndex = 0;
+      } else {
+        this._focusedIndex = this.filteredItems.indexOf(selectedItem);
+      }
     }
   }
 
@@ -1044,8 +1050,21 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
       event.composedPath()[0].focus();
       return;
     }
+
+    if(this._focusedIndex > -1 && this.$.overlay._items.indexOf(this.selectedItem) != this._focusedIndex){
+      this._focusedIndex = -1;
+    }
+
     if (!this._closeOnBlurIsPrevented) {
-      this._closeOrCommit();
+      this._closeOrCommit();    
+      this._focusFirst();
+    }
+  }
+
+  /** @private */
+  _focusFirst() {
+    if (this.filteredItems && this.filteredItems.length > 0 && !this.selectedItem) {
+      this._focusedIndex = 0;  
     }
   }
 
