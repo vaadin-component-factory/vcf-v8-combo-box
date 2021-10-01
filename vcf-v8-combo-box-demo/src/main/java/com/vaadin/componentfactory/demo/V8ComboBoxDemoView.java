@@ -34,19 +34,20 @@ public class V8ComboBoxDemoView extends DemoView {
 
     @Override
     public void initView() {
-        createComboBoxExample();
+        createBasicComboBoxExample();
+        createAllowCustomValuesComboBoxExample();
         
         addCard("Additional code used in the demo",
             new Label("These methods are used in the demo."));
     }
-
-    private void createComboBoxExample() {
-      Div message = createMessageDiv("combo-box-message");
+    
+    private void createBasicComboBoxExample() {
+      Div message = createMessageDiv("basic-combo-box-message");
       
       List<String> items = new ArrayList<>(Arrays.asList("Anna", "Thomas", "Annabella", "John", "Tom", "William", "Henry", "Johnatan", "Anthony", "Anne"));
             
       // begin-source-example
-      // source-example-heading: V8 ComboBox example
+      // source-example-heading: V8ComboBox basic usage example
       V8ComboBox<String> combo = new V8ComboBox<>("Select an option", items);
       combo.setClearButtonVisible(true);
       
@@ -55,8 +56,29 @@ public class V8ComboBoxDemoView extends DemoView {
           message.setText("New selected value: " + e.getValue());
         } else {
           message.setText("No value selected");
-        }
-        
+        }        
+      });
+      
+      // end-source-example
+      addCard("V8ComboBox basic usage example", combo, message);
+    }
+
+    private void createAllowCustomValuesComboBoxExample() {
+      Div message = createMessageDiv("combo-box-message");
+      
+      List<String> items = new ArrayList<>(Arrays.asList("Anna", "Thomas", "Annabella", "John", "Tom", "William", "Henry", "Johnatan", "Anthony", "Anne"));
+            
+      // begin-source-example
+      // source-example-heading: Allow custom values example
+      V8ComboBox<String> combo = new V8ComboBox<>("Select an option", items);
+      combo.setClearButtonVisible(true);
+      
+      combo.addValueChangeListener(e -> {
+        if(e.getValue() != null) {
+          message.setText("New selected value: " + e.getValue());
+        } else {
+          message.setText("No value selected");
+        }        
       });
       
       combo.addCustomValueSetListener(e -> {
@@ -66,7 +88,7 @@ public class V8ComboBoxDemoView extends DemoView {
       });
       
       // end-source-example
-      addCard("V8 ComboBox example", combo, message);
+      addCard("Allow custom values example", combo, message);
     }
     
     // begin-source-example
