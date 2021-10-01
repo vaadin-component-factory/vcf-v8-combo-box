@@ -1065,6 +1065,8 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
   _focusFirst() {
     if (this.filteredItems && this.filteredItems.length > 0 && !this.selectedItem) {
       this._focusedIndex = 0;  
+    } else if(this.selectedItem && (this.filter.length > 0 || this._inputElementValue.length == 0)){
+      this._focusedIndex = 0;  
     }
   }
 
