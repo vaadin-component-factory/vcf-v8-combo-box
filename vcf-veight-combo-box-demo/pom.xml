@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.vaadin.addons.componentfactory</groupId>
-    <artifactId>vcf-v8-combo-box-demo</artifactId>
+    <artifactId>vcf-veight-combo-box-demo</artifactId>
     <packaging>war</packaging>
     <name>Combo Box with Vaadin 8 behavior Demo</name>
 
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <inceptionYear>2021</inceptionYear>
     <organization>
         <name>Vaadin Ltd</name>
@@ -55,7 +55,7 @@
         <!-- Component -->
         <dependency>
             <groupId>org.vaadin.addons.componentfactory</groupId>
-            <artifactId>vcf-v8-combo-box</artifactId>
+            <artifactId>vcf-veight-combo-box</artifactId>
             <version>${project.version}</version>
         </dependency>
         
