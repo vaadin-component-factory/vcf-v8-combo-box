@@ -7,7 +7,7 @@
     <groupId>org.vaadin.addons.componentfactory</groupId>
     <artifactId>vcf-v8-combo-box-demo</artifactId>
     <packaging>war</packaging>
-    <name>Vaadin 8 behaving Combo Box Demo</name>
+    <name>Combo Box with Vaadin 8 behavior Demo</name>
 
     <version>1.0.0-SNAPSHOT</version>
     <inceptionYear>2021</inceptionYear>
