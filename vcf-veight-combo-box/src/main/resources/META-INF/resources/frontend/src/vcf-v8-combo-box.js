@@ -9,8 +9,8 @@ import '@vaadin/vaadin-text-field/src/vaadin-text-field.js';
 import { ControlStateMixin } from '@vaadin/vaadin-control-state-mixin/vaadin-control-state-mixin.js';
 import { ThemableMixin } from '@vaadin/vaadin-themable-mixin/vaadin-themable-mixin.js';
 import { ComboBoxMixin } from './vcf-v8-combo-box-mixin.js';
-import './vcf-v8-combo-box-dropdown-wrapper.js';
-import { ComboBoxDataProviderMixin } from './vcf-v8-combo-box-data-provider-mixin.js';
+import '@vaadin/vaadin-combo-box/src/vaadin-combo-box-dropdown-wrapper.js';
+import { ComboBoxDataProviderMixin } from '@vaadin/vaadin-combo-box/src/vaadin-combo-box-data-provider-mixin.js';
 import { ElementMixin } from '@vaadin/vaadin-element-mixin/vaadin-element-mixin.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 /**
@@ -211,8 +211,8 @@ class ComboBoxElement extends
 
     </vaadin-text-field>
 
-    <vcf-v8-combo-box-dropdown-wrapper id="overlay" opened="[[opened]]" renderer="[[renderer]]" position-target="[[_getPositionTarget()]]" _focused-index="[[_focusedIndex]]" _item-id-path="[[itemIdPath]]" _item-label-path="[[itemLabelPath]]" loading="[[loading]]" theme="[[theme]]">
-    </vcf-v8-combo-box-dropdown-wrapper>
+    <vaadin-combo-box-dropdown-wrapper id="overlay" opened="[[opened]]" renderer="[[renderer]]" position-target="[[_getPositionTarget()]]" _focused-index="[[_focusedIndex]]" _item-id-path="[[itemIdPath]]" _item-label-path="[[itemLabelPath]]" loading="[[loading]]" theme="[[theme]]">
+    </vaadin-combo-box-dropdown-wrapper>
 `;
   }
 
