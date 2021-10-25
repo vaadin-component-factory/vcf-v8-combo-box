@@ -11,7 +11,7 @@ import { templatize } from '@polymer/polymer/lib/utils/templatize.js';
 import { IronA11yAnnouncer } from '@polymer/iron-a11y-announcer/iron-a11y-announcer.js';
 import { IronA11yKeysBehavior } from '@polymer/iron-a11y-keys-behavior/iron-a11y-keys-behavior.js';
 import { FlattenedNodesObserver } from '@polymer/polymer/lib/utils/flattened-nodes-observer.js';
-import { ComboBoxPlaceholder } from './vcf-v8-combo-box-placeholder.js';
+import { ComboBoxPlaceholder } from '@vaadin/vaadin-combo-box/src/vaadin-combo-box-placeholder.js';
 
 /**
  * @polymerMixin
@@ -322,7 +322,7 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
    */
   render() {
     if (this.$.overlay._selector) {
-      this.$.overlay._selector.querySelectorAll('vcf-v8-combo-box-item').forEach(item => item._render());
+      this.$.overlay._selector.querySelectorAll('vaadin-combo-box-item').forEach(item => item._render());
     }
   }
 
@@ -1119,7 +1119,7 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
         this._TemplateClass = templatize(tpl, this, {
           instanceProps: this._instanceProps,
           forwardHostProp: function(prop, value) {
-            const items = this.$.overlay._selector.querySelectorAll('vcf-v8-combo-box-item');
+            const items = this.$.overlay._selector.querySelectorAll('vaadin-combo-box-item');
             Array.prototype.forEach.call(items, item => {
               if (item._itemTemplateInstance) {
                 item._itemTemplateInstance.set(prop, value);
