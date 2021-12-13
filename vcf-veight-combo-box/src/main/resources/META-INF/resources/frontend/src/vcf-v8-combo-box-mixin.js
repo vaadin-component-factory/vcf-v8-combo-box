@@ -249,7 +249,10 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
       _previousDocumentPointerEvents: String,
 
       /** @private */
-      _itemTemplate: Object
+      _itemTemplate: Object,
+
+      /** @private */
+      _preventSelectOnClose: Boolean
     };
   }
 
@@ -409,6 +412,7 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
       this.focus();
     } else if (path.indexOf(this.inputElement) !== -1) {
       if (path.indexOf(this._toggleElement) > -1 && this.opened) {
+        this._preventSelectOnClose = true;
         this.close();
       } else if (path.indexOf(this._toggleElement) > -1 || !this.autoOpenDisabled) {
         this.open();
@@ -667,8 +671,8 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
   }
 
   /** @private */
-  _commitValue() {
-    if (this.$.overlay._items && this._focusedIndex > -1) {
+  _commitValue() {    
+    if (this.$.overlay._items && this._focusedIndex > -1 && !this._preventSelectOnClose) {
       const focusedItem = this.$.overlay._items[this._focusedIndex];
       if (this.selectedItem !== focusedItem) {
         this.selectedItem = focusedItem;
@@ -696,12 +700,13 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
           this._selectItemForValue(customValue);
           this.value = customValue;
         }
-      } else if (!this.allowCustomValue && !this.opened && itemsMatchedByLabel.length == 1) {
-        this.value = this._getItemValue(itemsMatchedByLabel[0]);
       } else {
         this._inputElementValue = this.selectedItem ? this._getItemLabel(this.selectedItem) : (this.value || '');
+        this._focusedIndex = 0;
       }
     }
+
+    this._preventSelectOnClose = false;
 
     this._detectAndDispatchChange();
 
@@ -1063,8 +1068,12 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
 
   /** @private */
   _focusFirst() {
-    if (this.filteredItems && this.filteredItems.length > 0 && !this.selectedItem) {
-      this._focusedIndex = 0;  
+    if (this.filteredItems && this.filteredItems.length > 0) {
+      if(this.selectedItem){
+        this._focusedIndex = this._inputElementValue.length == this.selectedItem.label.length ? this.$.overlay._items.indexOf(this.selectedItem) : 0;
+      } else {
+        this._focusedIndex = 0;
+      }  
     } else if(this.selectedItem && (this.filter.length > 0 !== this._inputElementValue.length == 0)){
       this._focusedIndex = 0;  
     }
