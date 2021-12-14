@@ -3,3 +3,7 @@
 .settings
 target
 node_modules
+/vcf-veight-combo-box-demo/package.json
+/vcf-veight-combo-box-demo/package-lock.json
+/vcf-veight-combo-box-demo/webpack.config.js
+/vcf-veight-combo-box-demo/webpack.generated.js
