@@ -1,6 +1,7 @@
 .project
 .classpath
 .settings
+bin/
 target
 node_modules
 /vcf-veight-combo-box-demo/package.json
