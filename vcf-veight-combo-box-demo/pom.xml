@@ -117,7 +117,12 @@
             <version>${flow.version}</version>
         </dependency>
 
-        <!-- externals -->
+        <dependency>
+            <groupId>com.vaadin</groupId>
+            <artifactId>flow-component-demo-helpers</artifactId>
+            <version>${flow.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
