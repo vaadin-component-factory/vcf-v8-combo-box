@@ -441,7 +441,7 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
 
       // prevent caret from moving
       e.preventDefault();
-    } else if (this._isEventKey(e, 'enter')) {
+    } else if (this._isEventKey(e, 'enter') || this._isEventKey(e, 'tab')) {
       this._onEnter(e);
     } else if (this._isEventKey(e, 'esc')) {
       this._onEscape(e);
