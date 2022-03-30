@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.vaadin.addons.componentfactory</groupId>
     <artifactId>vcf-veight-combo-box</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
     <name>Combo Box with Vaadin 8 behavior</name>
     <packaging>jar</packaging>
 
