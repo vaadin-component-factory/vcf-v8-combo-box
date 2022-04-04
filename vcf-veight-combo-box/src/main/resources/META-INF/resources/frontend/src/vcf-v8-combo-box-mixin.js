@@ -441,10 +441,12 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
 
       // prevent caret from moving
       e.preventDefault();
-    } else if (this._isEventKey(e, 'enter') || this._isEventKey(e, 'tab')) {
+    } else if (this._isEventKey(e, 'enter')) {
       this._onEnter(e);
     } else if (this._isEventKey(e, 'esc')) {
       this._onEscape(e);
+    } else if(this._isEventKey(e, 'tab')){
+      this._onTab(e);
     }
   }
 
@@ -570,6 +572,13 @@ export const ComboBoxMixin = subclass => class VaadinComboBoxMixinElement extend
 
       // Do not trigger global listeners
       e.stopPropagation();
+    }
+  }
+
+  /** @private */
+  _onTab(e) {
+    if ((this.opened || this.autoOpenDisabled) && (this.allowCustomValue || this._inputElementValue === '' || this._focusedIndex > -1)) {
+      this._closeOrCommit();
     }
   }
 
